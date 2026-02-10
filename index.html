@@ -1,0 +1,196 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Vinay 🎀</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Baloo 2', cursive;
+      background: linear-gradient(180deg, #fde2e4, #f8edeb);
+      min-height: 100vh;
+      overflow: hidden;
+      text-align: center;
+      color: #6d2e46;
+    }.hearts span {
+  position: fixed;
+  font-size: 1.2rem;
+  opacity: 0.4;
+  animation: float 12s linear infinite;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-10vh); }
+}
+
+.container {
+  padding: 40px 16px;
+}
+
+.card {
+  max-width: 420px;
+  margin: auto;
+  background: #fff;
+  border-radius: 28px;
+  padding: 28px 22px 32px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+  animation: pop 0.8s ease;
+}
+
+@keyframes pop {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+h1 {
+  margin: 0;
+  color: #ff5d8f;
+  font-size: 2.2rem;
+}
+
+.subtitle {
+  margin-top: 6px;
+  color: #8a4f7d;
+}
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 22px 0;
+}
+
+.time {
+  background: #fff0f6;
+  border-radius: 16px;
+  padding: 12px 6px;
+  box-shadow: inset 0 0 0 1px #ffd6e8;
+}
+
+.time h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: #ff5d8f;
+}
+
+.time p {
+  margin: 0;
+  font-size: 0.75rem;
+}
+
+.hint {
+  background: #fff5f9;
+  border-radius: 18px;
+  padding: 14px;
+  margin-top: 14px;
+  font-size: 0.95rem;
+}
+
+.btn {
+  margin-top: 20px;
+  padding: 14px 26px;
+  border: none;
+  border-radius: 40px;
+  background: linear-gradient(135deg, #ff5d8f, #c77dff);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(199,125,255,0.4);
+  display: none;
+}
+
+.final {
+  display: none;
+}
+
+.gift {
+  margin: 22px auto;
+  background: linear-gradient(135deg, #ff5d8f, #c77dff);
+  color: white;
+  border-radius: 22px;
+  padding: 26px 16px;
+  cursor: pointer;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+footer {
+  margin-top: 18px;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+  </style>
+</head>
+<body>  <div class="hearts">
+    <span style="left:10%;animation-delay:0s">♡</span>
+    <span style="left:30%;animation-delay:2s">♡</span>
+    <span style="left:50%;animation-delay:4s">♡</span>
+    <span style="left:70%;animation-delay:1s">♡</span>
+    <span style="left:90%;animation-delay:3s">♡</span>
+  </div>  <div class="container"><div class="card" id="countdownCard">
+  <h1>Your Special Day is Almost Here 💕</h1>
+  <div class="subtitle">Just a little more…</div>
+
+  <div class="countdown">
+    <div class="time"><h2 id="d">0</h2><p>Days</p></div>
+    <div class="time"><h2 id="h">0</h2><p>Hours</p></div>
+    <div class="time"><h2 id="m">0</h2><p>Minutes</p></div>
+    <div class="time"><h2 id="s">0</h2><p>Seconds</p></div>
+  </div>
+
+  <div class="hint">A small gift for my favorite person 💖</div>
+  <button class="btn" id="openBtn" onclick="openGift()">For you →</button>
+</div>
+
+<div class="card final" id="finalCard">
+  <h1>Happy Birthday Vinay 🎉</h1>
+  <div class="subtitle">To the biggest cat lover 🐱</div>
+
+  <div class="gift">🎁 Tap to open your card</div>
+
+  <p>
+    May your days be soft, warm, and full of love 🤍<br>
+    May cats always choose you as their human 😼✨
+  </p>
+
+  <footer>made with love & aesthetic vibes 🎀</footer>
+</div>
+
+  </div>  <script>
+    // SET BIRTHDAY DATE HERE (YYYY, MM-1, DD)
+    const birthday = new Date(2026, 1, 11, 0, 0, 0);
+
+    const dEl = document.getElementById('d');
+    const hEl = document.getElementById('h');
+    const mEl = document.getElementById('m');
+    const sEl = document.getElementById('s');
+    const btn = document.getElementById('openBtn');
+
+    function update() {
+      const now = new Date();
+      const diff = birthday - now;
+
+      if (diff <= 0) {
+        dEl.innerText = hEl.innerText = mEl.innerText = sEl.innerText = 0;
+        btn.style.display = 'inline-block';
+        return;
+      }
+
+      dEl.innerText = Math.floor(diff / (1000*60*60*24));
+      hEl.innerText = Math.floor(diff / (1000*60*60) % 24);
+      mEl.innerText = Math.floor(diff / (1000*60) % 60);
+      sEl.innerText = Math.floor(diff / 1000 % 60);
+    }
+
+    function openGift() {
+      document.getElementById('countdownCard').style.display = 'none';
+      document.getElementById('finalCard').style.display = 'block';
+    }
+
+    setInterval(update, 1000);
+    update();
+  </script></body>
+</html>
